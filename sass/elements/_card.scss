@@ -1,0 +1,352 @@
+// Menu card
+// Stitched card
+// Auth Card
+// Panel card
+// Vocabulary card
+// Word card
+
+
+
+/* ===================================
+   Menu Card
+==================================== */
+.desktop-home_menu {
+    transform: translateX(20px);
+}
+
+.menu-card {      
+    background-color: #fff;
+    border: 1px solid $grey-light;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    padding: 30px 50px;
+    padding-right: 30px;
+    margin: 20px;
+
+    h5 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-right: auto;
+        color: $grey-black;
+    }
+
+    &--icon {
+        height: 25px;
+        margin-right: 20px;
+    }
+
+    &--chevron {
+        margin-left: 100px;
+        height: 20px;
+        justify-self: flex-end;
+    }
+
+    &--bigger {
+        margin-left: 1px;
+        height: 28px;
+    }
+}
+
+
+/* ===================================
+   Stitched Card
+==================================== */
+
+.stitched-card {
+    position: relative;
+    background-color: #fff;
+    padding: 70px 60px;
+    margin-top: 20px;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+
+// Desktop
+@media only screen and (min-width : $desktop) { 
+    .stitched-card {
+        border: 2px dashed #f8cd41c5;
+        padding: 70px 60px;
+        border-radius: 7px;
+    }
+}
+
+
+/* ===================================
+   Auth Card
+==================================== */
+.auth-card {
+    position: relative;
+    background-color: #fff;
+    padding: 70px 60px;
+    margin-top: 30px;
+
+    .form-heading {
+        margin-bottom: 40px;
+    }
+
+    .auth-icon {
+        position: relative;
+        height: 100px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        left: 2%;
+    }
+}
+
+// Desktop
+@media only screen and (min-width : $desktop) { 
+    .auth-card {
+        border: 2px dashed #f8cd41c5;
+        padding: 60px 70px;
+        padding-bottom: 90px;
+        border-radius: 20px;
+        margin-top: 20px;
+
+        .auth-icon {
+            height: 70px;
+        }
+    }
+}
+
+
+
+/* ===================================
+   Panel Card
+==================================== */
+
+.panel-card {
+    padding: 20px 30px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+
+    &_group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 15px 0 10px;
+        padding: 0 10px;
+
+        &--bundle {
+            margin-top: 20px;
+            padding-bottom: 30px;
+        }
+
+        &--title {
+            color: #eebf3d;
+            font-weight: 800;
+            font-size: 30px;
+            margin-right: 20px;
+        }
+
+        &--subtitle {
+            padding: 7px 0;
+            font-size: 14px;
+            color: #7c7982;
+            font-weight: 400;
+        }
+
+
+        & + button {
+            margin-top: 15px;
+            position: absolute;
+            right: 30px;
+            bottom: 0;
+        }
+
+        &.higher {
+            position: relative;
+            top: -12px;
+        }
+    }
+
+}
+
+@media only screen and (min-width : $desktop) { 
+    .panel-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba($color: #f2f2f2, $alpha: .43);
+        margin-top: 60px;
+        margin-bottom: 22px;
+        border-radius: 5px;
+        padding: 26px 50px 26px 30px;
+
+        &_group {
+            display: flex;
+            margin-bottom: 10px;
+
+            &--title {
+                font-size: 25px;
+            }
+
+            &--bundle {
+                margin-top: 0;
+                padding-bottom: 0;
+            }
+
+            & + button {
+                position: relative;
+                align-self: flex-start;
+            }
+
+        }
+    }
+}
+
+
+/* ===================================
+   Vocabulary Card
+==================================== */
+
+.vocabulary-card {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 16px;
+    margin-bottom: 19px;
+    padding: 18px 23px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(40,75,124,.08);
+    color: $grey-black;
+    border-radius: 6px;
+
+    &--art {
+        height: 50px;
+    }
+
+
+    &--text {
+        margin-left: 15px;
+        
+        h3 {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        p {
+            color: $grey-light;
+            font-size: 12px;
+        }   
+    }
+    
+
+    &--chevron {
+        color: #d9d9d9;
+        margin-left: auto;
+    }
+
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width : $desktop) {
+    .vocabulary-card {
+        margin: 10px;
+        margin-bottom: 18px;
+    }
+}
+
+
+/* ===================================
+   Word card
+==================================== */
+.word-card {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px;
+    margin-bottom: 0;
+    padding: 12px 23px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(40,75,124,.08);
+    color: $grey-black;
+    border-radius: 6px;
+
+    &--text {
+        h3 {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        p {
+            color: $grey-light;
+            font-size: 13px;
+            font-weight: 500;
+        }    
+    }
+
+    &--edits {
+        font-size: 18px;
+        margin-right: 10px;
+        transform: translateX(220%);
+        transition: all .3s;
+
+        .fa-edit {
+           color: $grey-dark; 
+           margin-right: 20px;
+        }
+
+        .fa-trash-alt {
+            color: #F86A79;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.show-edits &--edits {
+        transform: translateX(0);
+    }
+}
+
+.show-edits {
+    transform: translateX(0);
+}
+
+
+@media only screen and (min-width : $desktop) {
+    .word-card {
+        width: 45%;
+        margin-top: 10px;
+
+        &--edits {
+            display: none;     
+            transform: translateX(0%);
+       
+            .inline {
+                display: inline-block;
+            }
+
+            .fa-edit, .fa-trash-alt {
+                color: $grey-light;
+                transition: all .2s;
+            }
+
+            .fa-edit {
+               margin-right: 15px;
+
+               &:hover {
+                   color: $grey-dark;
+               }
+            }
+
+            .fa-trash-alt:hover {
+                color: #F86A79;
+            }
+        }
+    }
+
+    // hover over word item to show edits
+    .word-card:hover > .word-card--edits {
+        display: inline-block;
+    }
+}

@@ -1,47 +1,77 @@
-.container {
-    width: 100% !important;
-    margin: 1rem auto !important;
-    padding: 15px;
-    max-width: 1520px !important;
+body {
+    overflow: hidden;
+}
 
-    &.center {
+.window {
+    width: 100vw;
+    overflow-x: hidden !important;
+    min-height: 100vh;
+}  
+
+.container {
+    height: 88vh;
+    width: 100vw;
+    overflow: hidden;
+    transition: all 0.2s;
+
+    &.auth-container {
+        margin: 0 auto;
         text-align: center;
     }
 }
 
-.content {
-    margin: 35px auto;
-
-    &--narrow {
-        max-width: 1000px !important;
-    }
-
-    &--extra-narrow {
-        max-width: 400px !important;
-    }
-
-    &--fit-screen {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 1;
-        min-height: calc(100vh - 120px);
-        min-height: calc(100vh - 76px - 2.8rem - 65px - 10rem);
-    }   
+.scroll-container {
+    height: 100%;
+    width: 100vw;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: $grey-white;
 }
 
-.space {
-    background-color: transparent;
+.list-container {
+    background-color: rgba($color: $grey-header, $alpha: .42);
+    height: auto;
+    width: 100vw;
+    padding: 10px 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-top: 3px solid rgba($color: $grey-header, $alpha: .42);
+    margin-bottom: 50px;
+}
 
-    &.sm {
-        height: 5rem;
-    }
-   
-    &.md {
-        height: 10rem;
+.main-container {
+    margin: 0;
+}
+
+.flex {
+    display: block;
+}
+
+// Desktop
+@media only screen and (min-width : $desktop) {
+
+    .container {
+        &.auth-container {
+            width: 380px;
+            padding-top: 9vh;
+        }
     }
 
-    &.lg {
-        height: 15rem;
+    .main-container {
+        margin: 60px 26vw;
+    }
+
+    .list-container {
+        height: auto;
+        background-color: transparent;
+        border: none;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: calc(100% + 20px);
+        transform: translateX(-10px);
+
+        &.flex {
+            display: flex;
+        }
     }
 }
