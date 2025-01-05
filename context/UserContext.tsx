@@ -1,9 +1,13 @@
 'use client'
 
-import { User, UserContextTypes } from '@/types/user.types'
 import api from '@/utils/api'
+import { getLists } from '@/store/slices/list.slice'
+import { getWords } from '@/store/slices/word.slice'
+import { AppDispatch } from '@/store/store'
+import { User, UserContextTypes } from '@/types/user.types'
 import { auth } from '@/utils/firebase'
 import { createContext, useState, useEffect, ReactNode, FC } from 'react'
+import { useDispatch } from 'react-redux'
 
 const context: UserContextTypes = {
     currentUser: null,
@@ -13,12 +17,21 @@ const context: UserContextTypes = {
 export const UserContext = createContext<UserContextTypes>(context);
 
 export const UserContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
         checkUserSession();
     }, [])
+
+    useEffect(() => {
+        if (currentUser) {
+            dispatch(getWords());
+            dispatch(getLists());
+        }
+    }, [currentUser])
 
     const checkUserSession = async () => {
         try {

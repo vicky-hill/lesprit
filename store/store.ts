@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import listReducer from './slices/list.slice'
+import wordReducer from './slices/word.slice'
 
 export const makeStore = (preloadedState?: any) => {
   return configureStore({
     reducer: {
-      lists: listReducer
+      lists: listReducer,
+      words: wordReducer
     }
   })
 }

@@ -1,0 +1,131 @@
+.review {
+    padding-top: 40vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 87vh;
+
+    &_title {
+        margin-bottom: 50px;
+        font-weight: 600;
+        font-size: 28px;
+        z-index: 10;
+        width: 90vw;
+        text-align: center;
+        transition: all 0.4s;
+    }
+
+    &_phrase {
+        height: 170px;
+        transform: translateY(-200px);
+        width: 280px;
+        text-align: center;
+        color: $grey-dark;
+
+        p {
+            top: -50px;
+        }
+    
+        &--hide {
+            visibility: hidden;
+        }
+
+        &--covered {
+            color: transparent;
+            text-shadow: 0 0 6px rgba(0,0,0,0.4);
+            padding: 5px 10px;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+            border: $grey-light 1px solid;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        &--bold {
+            font-weight: 700;
+        }
+    }
+
+    &_title--small {
+        color: $grey-medium;
+        transform: scale(0.7) translateY(-20px);
+        font-weight: 400;
+    }
+
+    &-input {
+        position: relative;
+        border: none;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        padding: 100px 20px;
+        top: -30%;
+        background-color: transparent;
+        cursor: pointer;
+        // transition: all 0.1s;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &-close {
+        position: absolute;
+        top: 150px;
+        right: 50px;
+        cursor: pointer;
+        font-size: 20px;
+        color: grey;
+    }
+
+    .correct {
+        color: rgb(15, 106, 15);
+    }
+
+    .incorrect {
+        color: #F86A79;
+    }
+
+    /* ===================================
+       Levels
+    ==================================== */
+    &.review_level-2,
+    &.review_level-1 {
+        padding-top: 20vh;
+
+        input[type=text], input[type=password], textarea {
+            font-size: 14px;
+            width: 280px;
+            font-family: inherit;
+            margin-bottom: 25px;
+            border: 1px solid #dddddd;
+            padding: 11px 15px;
+            border-radius: 5px;
+        
+                &:focus {
+                    outline: none;
+                    border: 1px solid   #d1d0d0;
+                }
+        
+                &::placeholder {
+                    color: #d1cfcf;
+                }          
+        }
+    }
+
+    &.review_level-10 {
+        padding-top: 30vh;
+    }
+}
+
+.review-input:focus {
+    border: none !important;
+}
+
+.review-input:disabled {
+    opacity: 1;
+}

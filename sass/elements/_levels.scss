@@ -1,0 +1,23 @@
+.levels {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    &-item {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &__icon {
+            margin-right: 10px;
+            font-size: 22px;
+            width: 30px;
+        }
+
+        &__number {
+            font-weight: 500;
+            width: 70px;
+        }
+    }
+}

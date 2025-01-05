@@ -1,0 +1,161 @@
+/* ===================================
+   Desktop Circle
+==================================== */
+
+.desktop-home {
+
+    &_review {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 250px;
+        width: 21vw;
+        transform: translateX(50px);
+
+        &:hover {
+            cursor: pointer;
+        }
+    
+    
+        &--title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            font-family: Great Vibes;
+            color: white;
+            align-self: center;
+            justify-self: center;
+            text-shadow: 2px 2px rgba(0, 0, 0, .25);
+        }
+
+        &--circle {
+            width: 15vw;
+            margin: auto;
+        }
+
+        &--tag {
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 2px 11px;
+            padding-bottom: 4px;
+            position: absolute;
+            background-color: #E9BB74;
+            top: 160px;
+            right: 32px;
+            font-size: 13px;
+            color: white;
+            font-family: Lobster Two;
+            font-weight: 900;
+            box-shadow: 0 5px 2px rgba(0, 0, 0, .25);
+
+            p {
+                display: inline;
+            }
+
+            .check-mark{
+                margin-left: 8px;
+                font-size: 16px;
+            }
+
+            &.silver-tag {
+                margin-right: 30px;
+            }
+        }
+
+        #silver-tag {
+            margin-right: 30px;
+        }
+    }
+} 
+
+
+
+/* ===================================
+   Mobile Circle
+==================================== */
+
+.mobile-home {
+
+    &_review {
+        grid-row: 2/2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin: 0 auto;
+    
+
+        &--title {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            font-family: Great Vibes;
+            color: white;
+            align-self: center;
+            justify-self: center;
+            text-shadow: 2px 2px rgba(0, 0, 0, .25);
+        }
+
+        &--circle {
+            width: 70vw;
+            margin: auto;
+        }
+
+        &--tag {
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 6px 17px;
+            position: absolute;
+            background-color: $gold-primary;
+            top: 67%;
+            right: 5%;
+            font-size: 15px;
+            color: white;
+            font-family: Lobster Two;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .25);
+
+            p {
+                display: inline;
+            }
+
+            .check-mark{
+                margin-left: 8px;
+                font-size: 16px;
+            }
+
+        }
+
+        #silver-tag {
+            margin-right: 30px;
+        }
+    }
+} 
+
+
+/* ===================================
+   750px
+==================================== */
+
+@media only screen and (min-width : 700px) {
+    
+   .mobile-home_review--circle {
+       width: 40vw;
+   }
+
+   .mobile-home_review--tag {
+        right: 30%;
+   }
+    
+}
+
+
+@media only screen and (min-width : 900px) {
+    
+   .mobile-home_review--circle {
+       width: 30vw;
+   }
+    
+}

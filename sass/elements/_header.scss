@@ -1,0 +1,180 @@
+// Header
+.header {
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 80px;
+    height: 12vh;
+    box-shadow: 0 2px 10px rgba(40,75,124,.08);
+    background-color: $grey-header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    h1 {
+        font-family: Mustafa Script W05 Regular;
+        color: white;
+        color: $grey-black;
+        font-weight: 400;
+        margin: auto;
+        transition: all .5s;
+        font-size: 60px !important;
+        line-height: .8;
+        transform: translateY(10%);
+    }
+}
+
+// Hamburger
+.hamburger {
+    z-index: 1000;
+    position: absolute;
+    right: 12%;
+    top: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &-line {
+        width: 30px;
+        height: 2px;
+        background-color: white;
+        background-color: $grey-black;
+        margin: 3px;
+        border-radius: 15px;
+    }
+}
+
+// Navigation
+.nav {
+    display: none;
+    justify-self: right;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    text-align: right;
+    padding: 0 30px;
+
+    &-link {
+        color: $grey-black;
+        margin-left: 40px;
+        font-size: 17px;
+
+        &--user {
+            margin-left: 0;
+        }
+
+        &--signin {
+            position: absolute;
+            right: 100px;
+        }
+    }
+
+    img {
+        position: relative;
+        height: 50px;
+        margin-left: 45px;
+        top: -5px;
+    }
+
+    .fa-sign-in-alt, .fa-user-plus {
+        color: $gold-primary;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .fa-sign-in-alt {
+        font-size: 22px;
+    }
+    
+}
+
+// Dictionary search
+.dictionary-searchbar {
+    display: none;
+    width: 450px;
+
+    form {
+        input[type="text"] {
+            border: 1px #DAD8DB solid;
+            box-shadow: none;
+        }
+    }
+
+}  
+
+
+// Logout
+.logout {
+    display: none;
+    position: absolute;
+    transform: translateX(-45px);
+    margin-top: 20px;
+    color: $grey-black;
+    border: gainsboro 1px solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow:0 0px 7px rgba(40,75,124,.15);
+
+    &:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.show-logout {
+    display: block;
+}
+
+// Mobile Drawer
+.drawer {
+    z-index: 500;
+    padding: 20px 30px;
+    position: absolute;
+    top: 80px;
+
+    transform: translateX(100%);
+    height: calc(100vh - 80px);
+    right: 0;
+    background-color: white;
+    border-left: 1px gainsboro solid;
+    width: 60%;
+    transition: all .5s;
+}
+
+.show-drawer {
+    transform: translateX(0%);
+}
+
+
+/* ==========================================
+    Desktop
+========================================== */
+
+@media only screen and (min-width : $desktop) {
+    
+    .hamburger {
+        display: none;
+    }
+
+    .nav, .dictionary-searchbar {
+        display: flex;
+    }
+
+    .header {
+        background-color: #fff;
+        // background-color: $grey-black;
+        justify-content: space-around;
+        min-height: 80px;
+
+        h1 {
+            font-size: 40px;
+            position: relative;
+        }
+    }
+
+    
+}

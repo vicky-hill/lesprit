@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import '@/sass/main.scss'
 import StoreProvider from '@/store/StoreProvider';
 import { UserContextProvider } from '@/context/UserContext';
+import { ReviewContextProvider } from '@/context/ReviewContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +29,13 @@ export default function RootLayout({
     <html lang="en">
       <StoreProvider>
         <UserContextProvider>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-            {children}
-          </body>
+          <ReviewContextProvider>
+            <body
+              className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+              {children}
+            </body>
+          </ReviewContextProvider>
         </UserContextProvider>
       </StoreProvider>
     </html>

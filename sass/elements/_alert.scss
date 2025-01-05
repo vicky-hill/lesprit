@@ -1,0 +1,14 @@
+.alert {
+    padding: 5px 14px;
+    margin-top: 5p;
+    border-radius: 5px;
+    overflow: hidden;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background-color: #f8e1e1;
+    color: salmon;
+    border: 1px solid salmon;
+}

@@ -1,0 +1,15 @@
+.closing-x {
+    position: absolute;
+    color: #514f55;
+    top: 20px;
+    right: 26px;
+    cursor: pointer;
+}
+
+// Desktop
+@media only screen and (min-width : $desktop) { 
+    .closing-x {
+        position: absolute;
+        top: 20px;
+    }
+}

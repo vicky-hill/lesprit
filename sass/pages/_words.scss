@@ -1,0 +1,60 @@
+.phrase-edit_container, .phrase-edit_backdrop, .phrase-edit_textarea {
+    width: 290px;
+    height: 130px;
+    margin-bottom: 20px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+  }
+  
+.phrase-edit_highlights, .phrase-edit_textarea {
+padding: 10px;
+font: 20px/28px 'Lato', sans-serif;
+font-size: 14px;
+}
+
+.phrase-edit_container {
+    display: block;
+    margin: 0 auto;
+    transform: translateZ(0);
+    -webkit-text-size-adjust: none;
+}
+
+.phrase-edit_backdrop {
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+}
+
+.phrase-edit_highlights {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent;
+}
+
+.phrase-edit_textarea {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    color: #444;
+    background-color: transparent;
+    overflow: auto;
+    resize: none;
+    transition: transform 1s;
+
+    &::selection {
+        background-color: #b1d5e5;
+        stroke-width: 3;
+    }
+}
+
+mark {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #b1d5e5;
+}

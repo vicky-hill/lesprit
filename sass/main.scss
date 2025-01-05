@@ -1,14 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Lobster+Two&family=Roboto&display=swap');
 
 @import './base/variables';
 @import './base/base';
 @import './base/reset';
 @import './base/layout';
 
-@import './elements/card';
-@import './elements/form';
-@import './elements/spinner';
+@import "sass/elements/header";
+@import "sass/elements/footer";
+@import "sass/elements/spinner";
+@import "sass/elements/circle";
+@import "sass/elements/card";
+@import "sass/elements/slide";
+@import "sass/elements/form";
+@import "sass/elements/button";
+@import "sass/elements/hidden";
+@import "sass/elements/alert";
+@import "sass/elements/levels";
+
+@import "sass/pages/home";
+@import "sass/pages/review";
+@import "sass/pages/words";
 
 @tailwind base;
 @tailwind components;
