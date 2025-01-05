@@ -11,7 +11,12 @@ import type { NextConfig } from 'next'
 
 
 const nextConfig: NextConfig = {
-
+    env: {
+        DOMAIN: process.env.DOMAIN,
+        API_URL: process.env.API_URL,
+        ENV: process.env.ENV
+    },
+    reactStrictMode: false,
 }
 
 export default nextConfig;

@@ -2,8 +2,7 @@ import axios from "axios"
 import error from "./error";
 
 const instance = axios.create({
-    // baseURL: `${process.env.API_URL}`,
-    baseURL: "http://localhost:4000/api/lesprit",
+    baseURL: `${process.env.API_URL}`,
     headers: { 'Content-Type': 'application/json' }
 });
 
