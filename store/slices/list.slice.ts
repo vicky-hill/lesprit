@@ -74,7 +74,7 @@ export const listSlice = createSlice({
                 state.list = action.payload
             })
             .addCase(createList.fulfilled, (state: any, action: any) => {
-                state.lists = [...state.Lists, action.payload]
+                state.lists = [ action.payload, ...state.lists]
             })
             .addCase(updateList.fulfilled, (state: any, action: any) => {
                 state.lists = state.lists.map((list: List) => list._id !== action.payload._id ? list : action.payload)

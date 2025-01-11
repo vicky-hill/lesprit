@@ -3,10 +3,11 @@
 import { createContext, useState, useEffect } from 'react'
 import { DateTime } from 'luxon'
 import addTime from '@/utils/addTime'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from '@/store/store'
-import { updateWord } from '@/store/slices/word.slice'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/store/store'
+import { updateWord as updateWordAction } from '@/store/slices/word.slice'
 import { UpdateWord, Word } from '@/types/word.types'
+import { useWords } from '@/store/hooks'
 
 const ReviewContext = createContext({});
 
@@ -20,13 +21,13 @@ export const ReviewContextProvider = ({ children }: { children: React.ReactNode 
     const [show, setShow] = useState<string | null>(null);
     const [focused, setFocused] = useState<boolean>(false);
 
+    const { words } = useWords();
+
     const dispatch = useDispatch<AppDispatch>();
 
-    const dispatchUpdateWord = (wordId: string, payload: UpdateWord['payload']) => {
-        dispatch(updateWord({ wordId, payload }))
+    const updateWord = (wordId: string, payload: UpdateWord['payload']) => {
+        dispatch(updateWordAction({ wordId, payload }))
     }
-
-    const { words } = useSelector((state: RootState) => state.words)
 
     useEffect(() => {
         words.length && !wordsToReview && getReview();
@@ -75,7 +76,7 @@ export const ReviewContextProvider = ({ children }: { children: React.ReactNode 
 
         const newDate: string = addTime(currentWord.rating);
 
-        dispatchUpdateWord(_id, {
+        updateWord(_id, {
             rating: rating + 1,
             dueDate: newDate
         })
@@ -105,7 +106,7 @@ export const ReviewContextProvider = ({ children }: { children: React.ReactNode 
     const wrongAnswer = (currentWord: Word) => {
         const { _id } = currentWord;
 
-        dispatchUpdateWord(_id, {
+        updateWord(_id, {
             rating: 0
         })
 

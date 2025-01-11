@@ -1,97 +1,240 @@
-// Regular button
-// Transparent button
+@use 'sass:color';
 
-/* ===================================
-   Regular button
-==================================== */
-.regular-btn {
-    font-family: inherit;
-    border: none;
-    background-color: $gold-primary;
-    color: white;
-    font-weight: 600;
-    padding: 14px 30px;
-    border-radius: 9px;
-    margin-top: 15px;
-    border: 2px solid white;
+$disabled-background: #0000000a;
+$disabled-border: #d9d9d9;
+$disbled-color: #00000040;
+
+$default-grey: #d9d9d9;
+$default-black: #000000e0;
+
+.btn {
     cursor: pointer;
-    font-size: 14px;
-
-    &:active, &:focus {
-        outline: none;
-        border: 2px solid  #fdedbf;
-    }
-
-    &.w-250 {
-        width: 250px !important;
-    }
-}
-
-
-/* ===================================
-   Outline button
-==================================== */
-
-.outline-btn {
+    transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    font-family: -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 35px;
+    border: 1px solid;
 
-    background-color: transparent;
-    border: none;
-    color: $gold-primary;
-    color: #514F55;
-    vertical-align: middle;
-    font-size: 15px;
-    font-family: Lato;
-    border: 1px solid $gold-primary;
-    border: 1px solid #514F55;
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 5px;
-    line-height: 0;
-    cursor: pointer;
+    /* ===================================
+       Sizes
+    ==================================== */
 
-    &:not(:last-of-type) {
-        margin-right: 10px;
+    &-small {
+        height: 22px;
+        font-size: 14px;
+        padding-inline: 7px;
+        border-radius: 4px;
     }
 
+    &-regular {
+        height: 30px;
+        font-size: 14px;
+        padding-inline: 15px;
+        border-radius: 6px;
+    }
+
+    &-large {
+        height: 38px;
+        font-size: 16px;
+        padding-inline: 15px;
+        border-radius: 8px;
+    }
+
+    &:not(:disabled):focus-visible {
+        outline: 3px solid #91caff;
+        outline-offset: 1px;
+        transition: outline-offset 0s, outline 0s;
+    }
+
+    &-small, &-default {
+        .ant-spin-dot {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
 
     span {
-        position: relative;
-        top: -1px;
+        line-height: 1;
+    }
+
+    &.btn-loading {
+        cursor: default !important;
+    }
+
+    /* ===================================
+       Disabled
+    ==================================== */
+    &:disabled:not(.btn-loading) {
+        background-color: $disabled-background;
+        border-color: $disabled-border;
+        color: $disbled-color;
+        cursor: not-allowed;
+        box-shadow: none;
+
+        &:hover {
+            background-color: $disabled-background !important;
+            border-color: $disabled-border !important;
+            color: $disbled-color !important;
+            cursor: not-allowed !important;
+        }
+    }
+   
+
+    /* ===================================
+       Gold
+    ==================================== */
+    &-gold {
+        &-default {
+            box-shadow: 0 2px 0 rgba(color.mix(black, $default-grey, 10%), 0.1);
+            background-color: #fff;
+            border-color: $default-grey;
+            color: $default-black;
+
+            &:hover:not(.btn-loading) {
+                background-color: #fff;
+                color: $gold-primary;
+                border-color: $gold-primary;
+            }
+        }
+
+        &-solid {
+            box-shadow: 0 2px 0 rgba(color.mix(black, $gold-primary, 10%), 0.1);
+            background-color: $gold-primary;
+            border-color: $gold-primary;
+            color: #fff;
+
+            &:hover:not(.btn-loading) {
+                background-color: color.mix(white, $gold-primary, 15%);
+            }
+    
+            &:not(:focus-visible):focus {
+                box-shadow: 0 0 0 3px color.mix(white, $gold-primary, 55%);
+                color: #fff;
+            }
+    
+            &:not(.btn-loading):active {
+                background-color: color.mix(black, $gold-primary, 10%);
+            }
+        }
+
+        &-outline {
+            background-color: #fff;
+            color: $gold-primary;
+
+            &:not(:focus-visible):focus {
+                color: $gold-primary;
+            }
+
+            &:hover:not(.btn-loading) {
+                background-color: $gold-primary;
+                color: #fff;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 3px color.mix(white, $gold-primary, 55%);
+                color: $gold-primary;
+            }
+        }
+
+        &-dashed {
+            border-style: dashed;
+            background-color: #fff;
+            color: $gold-primary;
+
+            &:not(:focus-visible):focus {
+                color: $gold-primary;
+            }
+
+            &:hover:not(.btn-loading):not(.btn-clear) {
+                border-color: color.mix(white, $gold-primary, 25%);
+                color: color.mix(white, $gold-primary, 25%);
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 3px color.mix(white, $gold-primary, 55%);
+                color: $gold-primary;
+            }
+        }
+
+        &-filled {
+            background-color: color.mix(white, $gold-primary, 95%);
+            border-color: color.mix(white, $gold-primary, 95%);
+            box-shadow: none;
+            color: $gold-primary;
+
+            &:hover:not(.btn-loading) {
+                background-color:  color.mix(white, $gold-primary, 90%);
+            }
+
+            &:not(:focus-visible):focus {
+                box-shadow: 0 0 0 3px color.mix(white, $gold-primary, 80%);
+            }
+
+            &:not(.btn-loading):active {
+                background-color: color.mix(white, $gold-primary, 80%);
+            }
+        }
+
+        &-text {
+            background-color: transparent;
+            border-color: transparent;
+            box-shadow: none;
+            color: $gold-primary;
+
+            &:hover:not(.btn-loading) {
+                background-color: color.mix(white, $gold-primary, 95%);
+                color: color.mix(white, $gold-primary, 15%);
+            }
+
+            &:not(:focus-visible):focus {
+                box-shadow: 0 0 0 3px color.mix(white, $gold-primary, 80%);
+            }
+
+            &:not(.btn-loading):active {
+                background-color: color.mix(white, $gold-primary, 90%);
+            }
+
+            &:disabled:not(.btn-loading) {
+                background-color: transparent;
+                cursor: not-allowed;
+                color: $disbled-color;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: transparent !important;
+                    border-color: transparent !important;
+                }
+            }
+        }
+
+        &-transparent {
+            background-color: transparent;
+            border-color: transparent;
+            box-shadow: none;
+            color: $gold-primary;
+
+            &:hover:not(.btn-loading),
+            &:not(:focus-visible):focus {
+                color: color.mix(black, $gold-primary, 10%);
+            }
+
+            &:not(.btn-loading):active {
+                color: color.mix(black, $gold-primary, 15%);
+            }
+
+            &:disabled:not(.btn-loading) {
+                background-color: transparent;
+                cursor: not-allowed;
+                color: $disbled-color;
+                border-color: transparent;
+
+                &:hover {
+                    background-color: transparent !important;
+                    border-color: transparent !important;
+                }
+            }
+        }
     }
 }
-
-/* ===================================
-   Transparent button
-==================================== */
-.transparent-btn {
-    height: 12px;
-    background-color: transparent;
-    border: none;
-    color: $gold-primary;
-    vertical-align: middle;
-    font-size: 15px;
-    font-family: Lato;
-    display: flex;
-    align-items: center;
-                  
-    p {
-        display: inline-block;
-        font-size: 20px;
-        transform: translateY(2px);
-    }
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
-@media only screen and (min-width : $desktop) {
-    .transparent-btn {
-        font-size: 15px;
-    }
-}
-

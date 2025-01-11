@@ -4,7 +4,7 @@ import { FaTimes } from 'react-icons/fa'
 
 interface Slide {
     open: boolean
-    onClose: any
+    onClose?: () => void
     children: React.ReactNode
 }
 

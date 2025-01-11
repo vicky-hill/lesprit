@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "antd": "^5.23.0",
     "axios": "^1.7.9",
+    "classnames": "^2.5.1",
     "css-loader": "^7.1.2",
     "firebase": "^11.1.0",
     "luxon": "^3.5.0",

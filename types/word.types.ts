@@ -4,6 +4,7 @@ import { User } from './user.types'
 export interface WordState {
     words: Word[]
     word: Word | null
+    results: Word[] | null
     loading: boolean
 }
 
@@ -15,8 +16,8 @@ export interface Word {
     rating: number
     dueDate: string
     createdAt: string
-    list: string | List
-    user: string | User
+    list: List
+    user: User
 }
 
 export interface CreateWord {

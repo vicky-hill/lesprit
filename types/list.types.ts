@@ -15,7 +15,6 @@ export interface List {
 }
 
 export interface CreateList {    
-    _id: string
     title: string
 }
 

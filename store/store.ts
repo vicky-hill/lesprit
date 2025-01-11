@@ -5,8 +5,8 @@ import wordReducer from './slices/word.slice'
 export const makeStore = (preloadedState?: any) => {
   return configureStore({
     reducer: {
-      lists: listReducer,
-      words: wordReducer
+      listReducer: listReducer,
+      wordReducer: wordReducer
     }
   })
 }

@@ -6,5 +6,5 @@ export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 export const useAppStore: () => AppStore = useStore
 
-export const useWords = () => useSelector((state: RootState) => state.words);
-export const useLists = () => useSelector((state: RootState) => state.lists);
+export const useWords = () => useSelector((state: RootState) => state.wordReducer);
+export const useLists = () => useSelector((state: RootState) => state.listReducer);
