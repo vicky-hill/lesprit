@@ -50,49 +50,49 @@ export default function Levels({ }) {
         }
     }
 
-    // const getWeeklyDueWords = (time) => {
-    //     const now = DateTime.now().toISODate();
+    const getWeeklyDueWords = (time: 'this week' | 'next week' | 'month 1' | 'month 2') => {
+        const now = DateTime.now().toISODate();
 
-    //     switch (time) {
-    //         case 'this week':
-    //             return words.filter(word => {
-    //                 const date = new Date(word.dueDate)
-    //                 const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
-    //                 const weekDaysRemaining = 7 - Temporal.Now.plainDateISO().dayOfWeek;
-    //                 const difference = now.until(due).days;
-    //                 return difference >= 0 && difference <= weekDaysRemaining
-    //             })
+        switch (time) {
+            case 'this week':
+                return words.filter(word => {
+                    const date = new Date(word.dueDate)
+                    const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
+                    const weekDaysRemaining = 7 - Temporal.Now.plainDateISO().dayOfWeek;
+                    const difference = now.until(due).days;
+                    return difference >= 0 && difference <= weekDaysRemaining
+                })
 
-    //         case 'next week':
-    //             return words.filter(word => {
-    //                 const date = new Date(word.dueDate)
-    //                 const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
-    //                 const daysRemaining = 8 - Temporal.Now.plainDateISO().dayOfWeek;
-    //                 const difference = now.add({ days: daysRemaining }).until(due).days;
-    //                 return difference >= 0 && difference <= 7
-    //             })
+            case 'next week':
+                return words.filter(word => {
+                    const date = new Date(word.dueDate)
+                    const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
+                    const daysRemaining = 8 - Temporal.Now.plainDateISO().dayOfWeek;
+                    const difference = now.add({ days: daysRemaining }).until(due).days;
+                    return difference >= 0 && difference <= 7
+                })
 
-    //         case 'month 1':
-    //             return words.filter(word => {
-    //                 const date = new Date(word.dueDate)
-    //                 const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
-    //                 const then = now.month === 12 ? new Temporal.PlainDateTime(now.year + 1, 1, 1) : new Temporal.PlainDateTime(now.year, now.month + 1, 1)
+            case 'month 1':
+                return words.filter(word => {
+                    const date = new Date(word.dueDate)
+                    const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
+                    const then = now.month === 12 ? new Temporal.PlainDateTime(now.year + 1, 1, 1) : new Temporal.PlainDateTime(now.year, now.month + 1, 1)
 
-    //                 const difference = then.until(due).days;
-    //                 return difference >= 0 && difference <= then.daysInMonth;
-    //             })
+                    const difference = then.until(due).days;
+                    return difference >= 0 && difference <= then.daysInMonth;
+                })
 
-    //         case 'month 2':
-    //             return words.filter(word => {
-    //                 const date = new Date(word.dueDate)
-    //                 const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
-    //                 const then = now.add({ months: 6 }).month === 12 ? new Temporal.PlainDateTime(now.year + 1, 1, 1) : new Temporal.PlainDateTime(now.year, now.month + 1, 1)
+            case 'month 2':
+                return words.filter(word => {
+                    const date = new Date(word.dueDate)
+                    const due = new Temporal.PlainDateTime(date.getFullYear(), date.getMonth() + 1, date.getDate());
+                    const then = now.add({ months: 6 }).month === 12 ? new Temporal.PlainDateTime(now.year + 1, 1, 1) : new Temporal.PlainDateTime(now.year, now.month + 1, 1)
 
-    //                 const difference = then.until(due).days;
-    //                 return difference >= 0 && difference <= then.daysInMonth;
-    //             })
-    //     }
-    // }
+                    const difference = then.until(due).days;
+                    return difference >= 0 && difference <= then.daysInMonth;
+                })
+        }
+    }
 
     return (
         <>

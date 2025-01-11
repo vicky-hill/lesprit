@@ -8,6 +8,7 @@
 // export default nextConfig;
 
 import type { NextConfig } from 'next'
+import path from 'path'
 
 
 const nextConfig: NextConfig = {
@@ -17,6 +18,9 @@ const nextConfig: NextConfig = {
         ENV: process.env.ENV
     },
     reactStrictMode: false,
+    sassOptions: {
+        includePaths: [path.join(__dirname, 'sass')],
+      }
 }
 
 export default nextConfig;
