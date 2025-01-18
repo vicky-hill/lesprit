@@ -1,5 +1,4 @@
 import NextLink from 'next/link'
-import { useSearchParams } from 'next/navigation'
 
 const paths: any = {
     home() {
@@ -19,16 +18,7 @@ interface Link {
 
 
 export default function Link({ path, name, urlKey, href, children, ...rest }: Link) {
-    const searchParams = useSearchParams();
-    const clearParams = ['req'];
     let params = '';
-    
-
-    searchParams.forEach((value, name) => {
-        if (!clearParams.includes(name)) {
-            params = !params ? `?${name}=${value}` : `${params}&${name}=${value}`
-        }
-    })
 
     const getHref = () => {
         if (href) return href + params;

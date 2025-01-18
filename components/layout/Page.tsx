@@ -3,9 +3,10 @@
 import React, { useEffect, useContext, useState } from 'react'
 import UserContext from '@/context/UserContext'
 import { useRouter } from 'next/navigation'
-// import Header from './Header'
+// import Header from './Header.tsx'
 import Head from 'next/head'
 import Spinner from '../elements/Spinner'
+import Header from './Header'
 
 interface Page {
   children: React.ReactNode,
@@ -36,7 +37,7 @@ const Page = ({ children, title = 'Lesprit', protect }: Page) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header authenticated={currentUser} username={currentUser?.name} /> */}
+      <Header />
 
       {protect && !currentUser ? <Spinner /> : children}
     </div>

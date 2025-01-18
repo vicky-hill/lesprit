@@ -3,21 +3,20 @@
 import ReviewContext from '@/context/ReviewContext'
 import goldCircle from "@/assets/graphics/gold-circle.png"
 import silverCircle from "@/assets/graphics/silver-circle.png"
-import { RootState } from '@/store/store'
 import { useContext } from 'react'
-import { useSelector } from 'react-redux'
 import Spinner from './Spinner'
 import Slide from './Slide'
 import Review from './Review'
 import Levels from './Levels'
 import {greatVibes} from '@/app/layout';
+import { useWords } from '@/store/hooks'
 
 interface Circle {
     windowClass: 'desktop' | 'mobile'
 }
 
 export default function Circle({ windowClass }: Circle) {
-    const { words } = useSelector((state: RootState) => state.words);
+    const { words } = useWords();
     const { reviewSlide, startReview, endReview, reviewCount, levelSlide, showLevels, setLevelSlide }: any = useContext(ReviewContext);
 
     const gold = (
