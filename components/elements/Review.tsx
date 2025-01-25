@@ -4,11 +4,7 @@ import { useContext, useEffect, useState, useRef } from 'react'
 import ReviewContext from '@/context/ReviewContext'
 
 
-interface Review {
-
-}
-
-export default function Review({ }: Review) {
+export default function Review({ }) {
     const { currentWord, checkAnswer, answer, show, focused, setFocused, showAnswer, reviewSlide }: any = useContext(ReviewContext);
 
     const [value, setValue] = useState('');

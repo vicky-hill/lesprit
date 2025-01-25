@@ -94,7 +94,7 @@ export const ReviewContextProvider = ({ children }: { children: React.ReactNode 
     const checkAnswer = (typedAnswer: string) => {
         if (!currentWord) return console.warn('No current word found in check answer');
 
-        if (typedAnswer === currentWord.foreign) {
+        if (typedAnswer.replace(/‘/g, ' ').replace(/'/g, ' ') === currentWord.foreign.replace(/‘/g, ' ').replace(/'/g, ' ')) {
             setAnswer('correct');
 
             setTimeout(() => {

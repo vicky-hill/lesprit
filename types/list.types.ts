@@ -1,4 +1,5 @@
 import { User } from './user.types'
+import { Word } from './word.types'
 
 export interface ListState {
     lists: List[]
@@ -12,7 +13,8 @@ export interface List {
     urlKey: string
     createdAt: Date
     user: string | User
-    image?: string
+    image: string
+    words: Word[]
 }
 
 export interface CreateList {    

@@ -6,6 +6,7 @@ import { UserContextProvider } from '@/context/UserContext'
 import { ReviewContextProvider } from '@/context/ReviewContext'
 import localFont from 'next/font/local'
 import NextTopLoader from 'nextjs-toploader'
+import { ConfigProvider } from 'antd';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,10 +47,16 @@ export default function RootLayout({
         <UserContextProvider>
           <ReviewContextProvider>
             <body className={`antialiased`}>
-            <NextTopLoader showSpinner={false} color="#E9BB74" />
-              <div className="window">
+              <NextTopLoader showSpinner={false} color="#E9BB74" />
+              <ConfigProvider
+                theme={{
+                  token: {
+                    colorPrimary: '#FFBC00'
+                  }
+                }}
+              >
                 {children}
-              </div>
+              </ConfigProvider>
             </body>
           </ReviewContextProvider>
         </UserContextProvider>
