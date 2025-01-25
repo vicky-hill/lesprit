@@ -7,7 +7,7 @@ import { Spin } from 'antd'
 
 type Color = 'gold'
 type Size = 'small' | 'regular' | 'large'
-type Type = 'default' | 'solid' | 'outline' | 'dashed' | 'text' | 'filled' | 'transparent'
+type Type = 'default' | 'solid' | 'outline' | 'dashed' | 'text' | 'filled' | 'clear'
 
 
 interface Colors {
@@ -28,6 +28,7 @@ interface Button {
     size?: Size
     clear?: boolean
     type?: Type
+    className?: string
 }
 
 const DEFAULT_COLOR: Color = 'gold';
@@ -38,7 +39,7 @@ const colors: Colors = {
     gold: '#f8d679'
 }
 
-export default function Button({ children, type = DEFAULT_TYPE, link, color = DEFAULT_COLOR, block, ariaLabel, loading, disabled, size = DEFAULT_SIZE, icon, ...rest }: Button) {
+export default function Button({ children, type = DEFAULT_TYPE, link, color = DEFAULT_COLOR, block, ariaLabel, loading, disabled, size = DEFAULT_SIZE, icon, className = '', ...rest }: Button) {
     const classes = classNames('btn', {
         [`btn-${color}-default`]: type === 'default',
         [`btn-${color}-solid`]: type === 'solid',
@@ -46,7 +47,7 @@ export default function Button({ children, type = DEFAULT_TYPE, link, color = DE
         [`btn-${color}-dashed`]: type === 'dashed',
         [`btn-${color}-filled`]: type === 'filled',
         [`btn-${color}-text`]: type === 'text',
-        [`btn-${color}-transparent`]: type === 'transparent',
+        [`btn-${color}-clear`]: type === 'clear',
         [`btn-${size}`]: size,
         'w-full': block,
         'btn-loading': loading
@@ -58,7 +59,7 @@ export default function Button({ children, type = DEFAULT_TYPE, link, color = DE
     }
 
     const ButtonWithoutLink = (
-        <button disabled={loading || disabled} className={classes} {...rest} aria-label={ariaLabel}>
+        <button disabled={loading || disabled} className={`${classes} ${className}`} {...rest} aria-label={ariaLabel}>
             {icon && !loading && <div className='mr-2'>{icon}</div>}
 
             {loading && (

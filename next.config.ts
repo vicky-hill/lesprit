@@ -20,7 +20,17 @@ const nextConfig: NextConfig = {
     reactStrictMode: false,
     sassOptions: {
         includePaths: [path.join(__dirname, 'sass')],
-      }
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'ik.imagekit.io',
+                port: '',
+                pathname: '/minite/**'
+            }
+        ]
+    }
 }
 
 export default nextConfig;

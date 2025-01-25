@@ -12,6 +12,7 @@ export interface List {
     urlKey: string
     createdAt: Date
     user: string | User
+    image?: string
 }
 
 export interface CreateList {    

@@ -2,24 +2,23 @@
 
 import pineapple from '@/assets/graphics/pineapple.png'
 import Link from '@/next/Link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { mustafa } from '@/app/layout'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import UserContext from '@/context/UserContext'
 import { FaUserPlus, FaSignInAlt } from 'react-icons/fa'
-
+import Button from '../elements/Button'
+import { IoMdList } from 'react-icons/io'
+import { Modal } from 'antd'
 
 
 interface Header {
 
 }
 
-
-
-
-
 export default function Header({ }: Header) {
-    const router = useRouter();
+    const [model, setModal] = useState<'addList' | null>(null);
+
     const pathname = usePathname();
 
     const { currentUser, logout }: any = useContext(UserContext);
@@ -51,11 +50,11 @@ export default function Header({ }: Header) {
 
     return (
         <div className='header'>
-            {/* Dictionary Search */}
+            {/* Utility Buttons */}
             <div className="dictionary-searchbar">
-                {/* <form action="">
-                    <i class="fas fa-book-open input-icon"></i><input class="heading_grey-box_input rounded-input" type="text" />
-                </form> */}
+                {pathname === '/vocabulary' && (
+                    <Button onClick={() => setModal('addList')} type="clear" className='font-normal text-[#514F55] text-[16px]' icon={<IoMdList />}>Add List</Button>
+                )}
             </div>
 
             {/* Logo */}
@@ -63,7 +62,7 @@ export default function Header({ }: Header) {
                 <span className={`${mustafa.className} text-6xl antialiased`}>lesprit</span>
             </Link>
 
-            { !currentUser ? loggedOutNav : loggedInNav }
+            {!currentUser ? loggedOutNav : loggedInNav}
 
             {
                 currentUser && (
@@ -80,6 +79,13 @@ export default function Header({ }: Header) {
                     </>
                 )
             }
+
+            <Modal title="Basic Modal" open={model === 'addList'} onCancel={() => setModal(null)} footer={null}>
+                
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+            </Modal>
         </div>
     )
 }
