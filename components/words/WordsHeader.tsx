@@ -8,9 +8,10 @@ interface WordsHeader {
     title: string
     image: string
     count: number
+    openWordForm: () => void
 }
 
-export default function WordsHeader({ title, image, count }: WordsHeader) {
+export default function WordsHeader({ title, image, count, openWordForm }: WordsHeader) {
 
     return (
         <div className='flex justify-between items-start'>
@@ -22,8 +23,7 @@ export default function WordsHeader({ title, image, count }: WordsHeader) {
                 </div>
             </div>
             <div className='flex gap-2'>
-                <Button>Memorize</Button>
-                <Button icon={<FiPlus/>}>Add Words</Button>
+                <Button onClick={openWordForm} icon={<FiPlus/>}>Add Words</Button>
             </div>
         </div>
     )

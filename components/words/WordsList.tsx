@@ -4,14 +4,20 @@ import { Word } from '@/types/word.types'
 import { LiaTimesSolid } from 'react-icons/lia'
 import { CiEdit } from "react-icons/ci"
 import { Popconfirm } from 'antd'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/store/store'
+import { deleteWord } from '@/store/slices/word.slice'
 
 interface WordsList {
     words: Word[]
+    openWordForm: (word: Word) => void
 }
 
-export default function WordsList({ words }: WordsList) {
+export default function WordsList({ words, openWordForm }: WordsList) {
+    const dispatch = useDispatch<AppDispatch>()
+
     const confirm = (wordId: string) => {
-        console.log('delete', wordId);
+        dispatch(deleteWord(wordId));
     }
 
     return (
@@ -36,7 +42,7 @@ export default function WordsList({ words }: WordsList) {
                                 <LiaTimesSolid size={17} />
                             </div>
                         </Popconfirm>
-                        <div className='text-neutral-400 hover:text-neutral-700 hover:bg-neutral-50 cursor-pointer p-1 rounded transition-all'>
+                        <div onClick={() => openWordForm(word)} className='text-neutral-400 hover:text-neutral-700 hover:bg-neutral-50 cursor-pointer p-1 rounded transition-all'>
                             <CiEdit size={18} />
                         </div>
 

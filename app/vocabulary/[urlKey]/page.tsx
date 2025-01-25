@@ -8,9 +8,13 @@ import { List } from '@/types/list.types'
 import { useLists, useWords } from '@/store/hooks'
 import WordsHeader from '@/components/words/WordsHeader'
 import WordsList from '@/components/words/WordsList'
+import WordsForm from '@/components/words/WordsForm'
+import { Word } from '@/types/word.types'
 
 export default function page({ }) {
     const [list, setList] = useState<List | null>(null);
+    const [slide, setSlide] = useState<boolean>(false);
+    const [editWord, setEditWord] = useState<Word | null>(null);
 
     const { urlKey } = useParams<{ urlKey: string }>();
 
@@ -28,6 +32,15 @@ export default function page({ }) {
         }
     }, [urlKey, lists, words]);
 
+    const openWordForm = (word?: Word) => {
+        word && setEditWord(word);
+        setSlide(true);
+    }
+
+    const closeWordForm = () => {
+        setEditWord(null);
+        setSlide(false);
+    }
 
 
     return (
@@ -36,8 +49,28 @@ export default function page({ }) {
                 {
                     list && (
                         <>
-                            <WordsHeader title={list.title} image={list.image} count={list.words.length} />
-                            <WordsList words={list.words} />
+                            <WordsHeader
+                                title={list.title}
+                                image={list.image}
+                                count={list.words.length}
+                                openWordForm={openWordForm}
+                            />
+
+                            <WordsList
+                                words={list.words}
+                                openWordForm={openWordForm}
+                            />
+
+                            {
+                                list && (
+                                    <WordsForm
+                                        list={list}
+                                        slide={slide}
+                                        onClose={closeWordForm}
+                                    />
+                                )
+                            }
+
                         </>
                     )
                 }

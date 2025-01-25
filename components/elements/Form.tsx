@@ -46,7 +46,7 @@ export const Heading = ({ children }: Heading) => {
 export const Input = forwardRef((props: any, ref: any) => {
     return (
         <div className="input-container">
-            <input {...props} ref={ref} />
+            <input {...props} ref={ref} autoComplete='off' />
             <small className="invalid">{ props.validation }</small>
         </div>
     )
