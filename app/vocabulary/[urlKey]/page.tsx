@@ -19,7 +19,7 @@ export default function page({ }) {
     const { urlKey } = useParams<{ urlKey: string }>();
 
     const { words } = useWords();
-    const { lists } = useLists();
+    const { lists }: any = useLists();
 
     useEffect(() => {
         if (lists && words) {
@@ -50,9 +50,7 @@ export default function page({ }) {
                     list && (
                         <>
                             <WordsHeader
-                                title={list.title}
-                                image={list.image}
-                                count={list.words.length}
+                                list={list}
                                 openWordForm={openWordForm}
                             />
 
@@ -61,16 +59,12 @@ export default function page({ }) {
                                 openWordForm={openWordForm}
                             />
 
-                            {
-                                list && (
-                                    <WordsForm
-                                        list={list}
-                                        slide={slide}
-                                        onClose={closeWordForm}
-                                    />
-                                )
-                            }
-
+                            <WordsForm
+                                list={list}
+                                slide={slide}
+                                onClose={closeWordForm}
+                                editWord={editWord}
+                            />
                         </>
                     )
                 }

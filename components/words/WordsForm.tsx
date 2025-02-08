@@ -3,11 +3,11 @@
 import Image from 'next/image'
 import Slide from '../elements/Slide'
 import Form from '@/components/elements/Form'
-import { Input, SubmitButton } from '@/components/elements/Form'
-import { useState } from 'react'
+import { Input, SubmitButton, Heading } from '@/components/elements/Form';
+import { useState, createRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/store/store'
-import { createWord } from '@/store/slices/word.slice'
+import { createWord, updateWord } from '@/store/slices/word.slice'
 import { Word } from '@/types/word.types'
 import { List } from '@/types/list.types'
 
@@ -15,7 +15,7 @@ interface WordsForm {
     slide: boolean
     editWord?: Word | null
     onClose: () => any
-    list: List
+    list?: List
 }
 
 export default function WordsForm({ slide, onClose, list, editWord }: WordsForm) {
@@ -24,9 +24,21 @@ export default function WordsForm({ slide, onClose, list, editWord }: WordsForm)
         native: ''
     })
 
+    useEffect(() => {
+        editWord ? setValues({
+            native: editWord.native,
+            foreign: editWord.foreign
+        }) : setValues({
+            native: '',
+            foreign: ''
+        })
+    }, [editWord]);
+
     const dispatch = useDispatch<AppDispatch>();
 
     const { foreign, native } = values;
+
+    const refInput: any = createRef();
 
     const onChange = (e: any) => {
         setValues(values => ({
@@ -38,35 +50,56 @@ export default function WordsForm({ slide, onClose, list, editWord }: WordsForm)
     const onSubmit = (e: any) => {
         e.preventDefault();
 
-        if (!editWord) {
+        if (!foreign || !native) return;
+
+        if (!editWord && list) {
             dispatch(createWord({
                 foreign,
                 native,
                 list: list._id
             }))
+
+            refInput.current.focus();
+
+
+        } else if (editWord) {
+            dispatch(updateWord({
+                wordId: editWord._id,
+                payload: { foreign, native }
+            }))
+
+            onClose();
         }
 
-        setValues({ foreign: '', native: ''})
+        setValues({ foreign: '', native: '' })
     }
 
 
     return (
         <Slide open={slide} onClose={onClose}>
             <div className='flex flex-col items-center mt-2'>
-                <Image
-                    alt='List image'
-                    src={list.image}
-                    height={150}
-                    width={150}
-                />
-                <p className='font-800 text-2xl mt-7'>{list.title}</p>
-                <p className='mt-2 font-semibold text-zinc-500'>{list.words.length} Words</p>
+                {
+                    !editWord && list ? (
+                        <>
+                            <Image
+                                alt='List image'
+                                src={list.image}
+                                height={150}
+                                width={150}
+                            />
+                            <p className='font-800 text-2xl mt-7 mb-10'>{list.title}</p>
+                        </>
+                    ) : (
+                        <Heading>Update Word</Heading>
+                    )
+                }
 
-                <div className="w-1/5 mt-10">
+
+                <div className="w-1/5">
                     <Form onSubmit={onSubmit}>
-                        <Input placeholder="French" name="foreign" id="foreign" value={foreign} onChange={onChange} type="text" />
+                        <Input placeholder="French" name="foreign" id="foreign" value={foreign} onChange={onChange} type="text" ref={refInput} />
                         <Input placeholder="English" name="native" id="native" value={native} onChange={onChange} type="text" />
-                        <SubmitButton title="Add Word" />
+                        <SubmitButton title={editWord ? 'Save Word' : 'Add Word'} />
                     </Form>
                 </div>
 

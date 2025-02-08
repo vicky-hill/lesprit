@@ -108,9 +108,10 @@ export const wordSlice = createSlice({
             })
             .addCase(deleteWord.fulfilled, (state: any, action: any) => {
                 const updatedWords = state.words.filter((word: Word) => word._id !== action.payload._id);
+                const updatedResults = state.results.filter((word: Word) => word._id !== action.payload._id);
                 
                 state.words = updatedWords
-                state.results = state.results && updatedWords
+                state.results = state.results && updatedResults
             })
             .addCase(searchWords.fulfilled, (state: any, action: any) => {
                 state.results = action.payload

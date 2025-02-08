@@ -4,6 +4,7 @@ import { clearSearch, searchWords } from '@/store/slices/word.slice'
 import { AppDispatch } from '@/store/store'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import Form, { Input } from './Form'
 
 
 function Searchbar({ }) {
@@ -21,9 +22,10 @@ function Searchbar({ }) {
     }
 
     return (
-        <div>
-            <i className="fas fa-search input-icon" />
-            <input className="searchbar rounded-input" type="text" placeholder="Search Vocabulary" value={search} onChange={onChange} />
+        <div className='w-1/3 mx-auto'>
+            <Form onSubmit={(e: any) => e.preventDefault()}>
+                <Input type="text" placeholder="Search" value={search} onChange={onChange} />
+            </Form>
         </div>
     )
 }

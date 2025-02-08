@@ -15,7 +15,7 @@ interface Colors {
 }
 
 interface Button {
-    children: React.ReactNode
+    children?: React.ReactNode
     icon?: React.ReactNode
     block?: boolean
     outline?: boolean
@@ -60,7 +60,7 @@ export default function Button({ children, type = DEFAULT_TYPE, link, color = DE
 
     const ButtonWithoutLink = (
         <button disabled={loading || disabled} className={`${classes} ${className}`} {...rest} aria-label={ariaLabel}>
-            {icon && !loading && <div className='mr-2'>{icon}</div>}
+            {icon && !loading && <div className={children ? 'mr-2' : ''}>{icon}</div>}
 
             {loading && (
                 <Spin
