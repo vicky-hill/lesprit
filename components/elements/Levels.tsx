@@ -43,7 +43,7 @@ export default function Levels({ }) {
             case 9:
                 return words.filter(word => word.rating > 23 && word.rating <= 25);
             case 10:
-                return words.filter(word => word.rating > 25 && word.rating <= 28);
+                return words.filter(word => word.rating > 25);
             default:
                 return words.filter(word => word.rating > 28)
         }
