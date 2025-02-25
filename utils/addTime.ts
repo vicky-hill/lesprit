@@ -55,13 +55,10 @@ const addTime = (rating: number): any => {
         case 17:
             result.setMonth(result.getMonth() + 11);
             return result;
-        case 18:
+        default:
             result.setMonth(result.getMonth() + 12);
             return result;
-        default:
-            console.log(rating);
     }
-    return result;
 }
 
 export default addTime;
